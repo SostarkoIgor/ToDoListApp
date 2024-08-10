@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: todolist
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/todolistdbm
+    username:
+    password:
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database: postgresql
+    show-sql: true
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 5MB
+      max-request-size: 10MB
