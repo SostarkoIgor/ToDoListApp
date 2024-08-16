@@ -10,11 +10,16 @@ function Login(){
 
     const [errorMessage, setErrorMessage] = useState('')
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
-        LoginUser(email, password)
-            .then(() => navigate('/login'))
-            .catch((err) => setErrorMessage(err.response.data.message))
+        let t = await LoginUser(email, password)
+        if (t.outcome) {
+            navigate('/home')
+        }
+        else {
+            setErrorMessage(t.message + ` (${t.statuscode})`) 
+        }
+            
     }
     return (
         <div className={styles.container}>
@@ -34,7 +39,7 @@ function Login(){
                         />
                     </div>
                     <div className={styles.inputContainer}>
-                        <label htmlFor="password"  className={styles.label}><span class="material-icons">password</span></label>
+                        <label htmlFor="password"  className={styles.label}><span className="material-icons">password</span></label>
                         <input
                         className={styles.input}
                         type="password"
@@ -46,8 +51,8 @@ function Login(){
                         />
                     </div>
                     <button type="submit" className={styles.button}>Login</button>
-                    {errorMessage && <p className={styles.error}>{errorMessage}</p>}
                     <p className={styles.link}>Don't have an account? <a className={styles.linka} href="/register">Register</a></p>
+                    {errorMessage && <p className={styles.error}>{errorMessage}</p>}
                 </form>
             </div>
         </div>)

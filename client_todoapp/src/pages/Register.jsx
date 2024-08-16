@@ -11,15 +11,20 @@ function Register() {
 
     const [errorMessage, setErrorMessage] = useState('')
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
         if (password !== confirmPassword) {
             setErrorMessage('Passwords do not match')
             return
         }
-        RegisterUser(name, email, password)
-            .then(() => navigate('/login'))
-            .catch((err) => setErrorMessage(err.response.data.message))
+        var t = await RegisterUser(name, email, password)
+        if (t.outcome) {
+            navigate('/login')
+        }
+        else {
+            setErrorMessage(t.message + ` (${t.statuscode})`)
+        }
+            
     }
 
     return (
@@ -52,7 +57,7 @@ function Register() {
                     />
                 </div>
                 <div className={styles.inputContainer}>
-                    <label htmlFor="password"  className={styles.label}><span class="material-icons">password</span></label>
+                    <label htmlFor="password"  className={styles.label}><span className="material-icons">password</span></label>
                     <input
                     className={styles.input}
                     type="password"
@@ -64,7 +69,7 @@ function Register() {
                     />
                 </div>
                 <div className={styles.inputContainer}>
-                    <label htmlFor="cpassword"  className={styles.label}><span class="material-icons">password</span></label>
+                    <label htmlFor="cpassword"  className={styles.label}><span className="material-icons">password</span></label>
                     <input
                     className={styles.input}
                     type="password"
@@ -76,8 +81,9 @@ function Register() {
                     />
                 </div>
                 <button type="submit" className={styles.button}>Register</button>
-                {errorMessage && <p className={styles.error}>{errorMessage}</p>}
+                
                 <p className={styles.link}>Already have an account? <a className={styles.linka} href="/login">Login</a></p>
+                {errorMessage && <p className={styles.error}>{errorMessage}</p>}
             </form>
         </div>
     </div>)
