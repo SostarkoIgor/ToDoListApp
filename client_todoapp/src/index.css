@@ -1,9 +1,21 @@
 :root {
-  
+  --primary-color: #3581B8;
+  --secondary-color: #f79655e7;
+  --tertiary-color: #DEE2D6;
+  --quaternary-color: #d3ddea;
+
+  --primary-font-color: #5a5a5a;
+  --secondary-font-color: #f7f7f7;
 }
 
-html{
+*{
   padding: 0%;
   margin: 0%;
   box-sizing: border-box;
+  font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen';
+}
+
+#root, body{
+  min-height: 100vh;
+  min-width: 100vw;
 }
