@@ -47,6 +47,7 @@ function Login(){
                     </div>
                     <button type="submit" className={styles.button}>Login</button>
                     {errorMessage && <p className={styles.error}>{errorMessage}</p>}
+                    <p className={styles.link}>Don't have an account? <a className={styles.linka} href="/register">Register</a></p>
                 </form>
             </div>
         </div>)

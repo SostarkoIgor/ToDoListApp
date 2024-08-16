@@ -77,6 +77,7 @@ function Register() {
                 </div>
                 <button type="submit" className={styles.button}>Register</button>
                 {errorMessage && <p className={styles.error}>{errorMessage}</p>}
+                <p className={styles.link}>Already have an account? <a className={styles.linka} href="/login">Login</a></p>
             </form>
         </div>
     </div>)
