@@ -24,7 +24,10 @@ public class User implements UserDetails {
     @GeneratedValue
     private Integer id;
 
+    @Column(unique = true)
     private String username_;
+
+    @Column(unique = true)
     private String email;
     private String pass;
     @Enumerated(EnumType.STRING)
