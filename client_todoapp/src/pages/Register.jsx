@@ -33,7 +33,7 @@ function Register() {
             <p className={styles.title}>Register</p>
             <form onSubmit={onSubmit} className={styles.form}>
                 <div className={styles.inputContainer}>
-                    <label htmlFor="name" className={styles.label}><span class="material-icons">person</span></label>
+                    <label htmlFor="name" className={styles.label}><span class="material-symbols-outlined">person</span></label>
                     <input
                     className={styles.input}
                     type="text"
@@ -45,7 +45,7 @@ function Register() {
                     />
                 </div>
                 <div className={styles.inputContainer}>
-                    <label htmlFor="email"  className={styles.label}><i className="material-icons">email</i></label>
+                    <label htmlFor="email"  className={styles.label}><i className="material-symbols-outlined">email</i></label>
                     <input
                     className={styles.input}
                     type="email"
@@ -57,7 +57,7 @@ function Register() {
                     />
                 </div>
                 <div className={styles.inputContainer}>
-                    <label htmlFor="password"  className={styles.label}><span className="material-icons">password</span></label>
+                    <label htmlFor="password"  className={styles.label}><span className="material-symbols-outlined">password</span></label>
                     <input
                     className={styles.input}
                     type="password"
@@ -69,7 +69,7 @@ function Register() {
                     />
                 </div>
                 <div className={styles.inputContainer}>
-                    <label htmlFor="cpassword"  className={styles.label}><span className="material-icons">password</span></label>
+                    <label htmlFor="cpassword"  className={styles.label}><span className="material-symbols-outlined">password</span></label>
                     <input
                     className={styles.input}
                     type="password"

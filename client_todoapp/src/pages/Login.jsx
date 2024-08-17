@@ -27,7 +27,7 @@ function Login(){
                 <p className={styles.title}>Login</p>
                 <form onSubmit={onSubmit} className={styles.form}>
                     <div className={styles.inputContainer}>
-                        <label htmlFor="email"  className={styles.label}><i className="material-icons">email</i></label>
+                        <label htmlFor="email"  className={styles.label}><i className="material-symbols-outlined">email</i></label>
                         <input
                         className={styles.input}
                         type="email"
@@ -39,7 +39,7 @@ function Login(){
                         />
                     </div>
                     <div className={styles.inputContainer}>
-                        <label htmlFor="password"  className={styles.label}><span className="material-icons">password</span></label>
+                        <label htmlFor="password"  className={styles.label}><span className="material-symbols-outlined">key</span></label>
                         <input
                         className={styles.input}
                         type="password"
