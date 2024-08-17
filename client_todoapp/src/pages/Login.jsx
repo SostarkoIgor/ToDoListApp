@@ -14,7 +14,7 @@ function Login(){
         e.preventDefault()
         let t = await LoginUser(email, password)
         if (t.outcome) {
-            navigate('/home')
+            navigate('/')
         }
         else {
             setErrorMessage(t.message + ` (${t.statuscode})`) 

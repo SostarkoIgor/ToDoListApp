@@ -33,7 +33,7 @@ function Register() {
             <p className={styles.title}>Register</p>
             <form onSubmit={onSubmit} className={styles.form}>
                 <div className={styles.inputContainer}>
-                    <label htmlFor="name" className={styles.label}><span class="material-symbols-outlined">person</span></label>
+                    <label htmlFor="name" className={styles.label}><span className="material-symbols-outlined">person</span></label>
                     <input
                     className={styles.input}
                     type="text"

@@ -2,6 +2,7 @@ import axios from 'axios'
 import { setToken, removeToken } from './JwtService'
 export async function RegisterUser(name, email, password) {
     let statuscode, message, outcome
+    removeToken()
     try{
         let response = await axios.post('/api/auth/register', {
             name:name,
@@ -30,6 +31,7 @@ export async function RegisterUser(name, email, password) {
 
 export async function LoginUser(email, password) {
     let statuscode, message, outcome
+    removeToken()
     try{
         let response = await axios.post('/api/auth/login', {
             email:email,
@@ -38,7 +40,6 @@ export async function LoginUser(email, password) {
         statuscode = response.status
         message = ""
         outcome = true
-        removeToken()
         setToken(response.data.token)
 
     }

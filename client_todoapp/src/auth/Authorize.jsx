@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
+import Navbar from '../components/Navbar';
 
 function isValidToken(token) {
     try{
@@ -16,7 +17,11 @@ function Authorize({ children }) {
   const token = localStorage.getItem('token');
 
   if (token && isValidToken(token))
-    return children
+    return (
+    <>
+    <Navbar/>
+    {children}
+    </>)
   else{
     localStorage.removeItem('token')
     return <Navigate to="/login" />
