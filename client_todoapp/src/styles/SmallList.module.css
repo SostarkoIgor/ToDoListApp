@@ -1,0 +1,82 @@
+.container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    padding-bottom: 0.3rem;
+    min-width: 150px;
+    background-color: var(--quaternary-color);
+    color: var(--primary-font-color);
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 0px rgba(78, 78, 78, 0.75);
+}
+
+.delete{
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    cursor: pointer;
+    color: darkred;
+    display: block;
+
+    transition: all 0.7s;
+}
+
+.delete:hover{
+    transform: scale(1.2);
+}
+
+.title{
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: large;
+}
+
+.labeltext{
+    color: var(--primary-font-color);
+    font-size: 0.8rem;
+    font-weight: bold;
+
+}
+
+.date{
+    color: var(--tertiary-font-color);
+    font-style: italic;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+}
+
+
+
+.container:hover{
+    outline: 2px solid var(--primary-color);
+}
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border: none;
+    background-color: transparent;
+    color: var(--primary-font-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    margin: 0.5rem auto;
+    margin-bottom: 0;
+
+    transition: all 0.7s;
+}
+
+.button:hover{
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
