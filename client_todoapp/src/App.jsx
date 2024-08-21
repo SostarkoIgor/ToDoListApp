@@ -5,6 +5,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Home from './pages/Home'
 import Authorize from './auth/Authorize'
+import CreateList from './pages/CreateList'
 
 function App() {
 
@@ -14,7 +15,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Authorize><Home /></Authorize>} />
-        </Routes>
+        <Route path="/create" element={<Authorize><CreateList/></Authorize>} />
+      </Routes>
     </BrowserRouter>
   )
 }
