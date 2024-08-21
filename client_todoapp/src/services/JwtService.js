@@ -1,6 +1,15 @@
 
 export function getToken() {
-    return localStorage.getItem('token')
+    let token=localStorage.getItem('token')
+    return token
+    /*if (!token) return null
+    try {
+        jwtDecode(token)
+        return token
+    } catch (error) {
+        removeToken()
+        return null
+    }*/
 }
 
 export function setToken(token) {
