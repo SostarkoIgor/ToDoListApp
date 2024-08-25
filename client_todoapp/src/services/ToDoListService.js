@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getToken } from "./JwtService";
 
-export async function getUserLists(page, size) {
+export async function getUserLists(page, size, title, order, orderby) {
     let success, status, result
     let token=getToken()
     page=page?page:0
@@ -13,7 +13,7 @@ export async function getUserLists(page, size) {
             headers: {
                 "Authorization": "Bearer " + token
             },
-            params: {page: page, size: size}
+            params: {page: page, size: size, title: title, order: order, orderby: orderby}
         })
         status=request.status
         result=request.data

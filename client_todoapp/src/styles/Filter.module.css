@@ -44,6 +44,7 @@
     color: var(--secondary-font-color);
     border: none;
     padding: 0.1rem;
+    padding-right: 0.5rem;
     font-size: 1em;
     border-radius: 5px;
     cursor: pointer;
@@ -75,6 +76,6 @@
 
 .select:focus{
     background-color: transparent;
-    border: 2px solid var(--primary-color);
+    outline: 2px solid var(--primary-color);
     color: var(--primary-font-color);
 }

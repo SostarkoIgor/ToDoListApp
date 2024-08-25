@@ -12,15 +12,25 @@ function Home(){
     const [success, setSuccess] = useState(true)
     const [loading, setLoading] = useState(true)
     const [searchParams, setSearchParams] = useSearchParams()
+    const [query, setQuery] = useState("")
 
     useEffect(() => {
         async function start(){
-            let list=await getUserLists(searchParams.get("page"), searchParams.get("size"))
-            console.log(list)
+            let title=searchParams.get("title")
+            let order=searchParams.get("order")
+            let orderby=searchParams.get("orderby")
+            let list=await getUserLists(
+                searchParams.get("page"),
+                searchParams.get("size"),
+                title,
+                order,
+                orderby
+            )
             setPage(list.result)
             setStatus(list.status)
             setSuccess(list.success)
             setLoading(false)
+            setQuery(`&title=${title}&order=${order}&orderby=${orderby}`)
         }
         start()
         
@@ -34,7 +44,7 @@ function Home(){
     {page.content.map((a, index)=><SmallList key={index} id={a.id} title={a.title} dateCreated={a.datecreated}></SmallList>)}
     </div>
     {page.totalPages>1 && 
-    <NavigatePages page={page}/>}
+    <NavigatePages page={page} query={query}/>}
     </>)
 }
 
