@@ -4,14 +4,31 @@
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    gap: 1rem;
-    padding: 1rem;
-    padding-bottom: 0.3rem;
+    gap: 0rem;
+    /* padding: 1rem; */
     min-width: 150px;
-    background-color: var(--quaternary-color);
-    color: var(--primary-font-color);
-    border-radius: 5px;
+    /* background-color: var(--quaternary-color); */
+    background-color: transparent;
+    /* color: var(--primary-font-color); */
+    /* border-radius: 5px; */
+    border: 1px solid var(--primary-color);
     box-shadow: 1px 1px 1px 0px rgba(78, 78, 78, 0.75);
+}
+
+.containerdate, .containertitle{
+    width: 100%;
+    padding: 1rem;
+    text-align: left;
+}
+
+
+
+.containertitle{
+    
+    background-color: var(--primary-color-dark);
+    color: var(--secondary-font-color);
+    /* border-radius: 5px 5px 0 0; */
+    
 }
 
 .delete{
@@ -19,37 +36,39 @@
     top: 0.5rem;
     right: 0.5rem;
     cursor: pointer;
-    color: darkred;
+    color: var(--secondary-font-color);
     display: block;
 
     transition: all 0.7s;
 }
 
 .delete:hover{
-    transform: scale(1.2);
+    color: var(--secondary-color);
 }
 
 .title{
-    color: var(--primary-color);
+    color: var(--secondary-font-color);
+    margin-top: 0.5rem;
     font-weight: 600;
     font-size: large;
 }
 
 .labeltext{
-    color: var(--primary-font-color);
     font-size: 0.8rem;
     font-weight: bold;
+}
 
+.containertitle .labeltext{
+    color: var(--secondary-font-color);
+}
+
+.containerdate .labeltext{
+    color: var(--tertiary-font-color);
 }
 
 .date{
     color: var(--tertiary-font-color);
-    font-style: italic;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
+    margin-top: 0.5rem;
     font-size: 0.8rem;
 }
 
@@ -78,5 +97,4 @@
 
 .button:hover{
     color: var(--primary-color);
-    transform: scale(1.1);
 }
