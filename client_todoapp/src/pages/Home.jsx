@@ -29,7 +29,7 @@ function Home(){
     if (!success) return (<Navigate to="/login" />)
     else
     return (<>
-    
+    <Filter></Filter>
     <div className={styles.container}>
     {page.content.map((a, index)=><SmallList key={index} id={a.id} title={a.title} dateCreated={a.datecreated}></SmallList>)}
     </div>

@@ -1,0 +1,80 @@
+.container{
+    padding: 1rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.form{
+    text-align: center;
+}
+
+.inputContainer {
+    display: inline-block;
+    margin: 0.5rem;
+}
+
+.inputContainer * {
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+}
+
+.label{
+    color: var(--primary-font-color);
+}
+
+.input{
+    outline: none;
+    border: none;
+    padding: 0.1em;
+    font-size: 1em;
+    border-bottom: 2px solid var(--primary-color);
+    color: var(--primary-font-color);
+}
+
+.input::placeholder{
+    color: var(--primary-font-color);
+    opacity: 0.5;
+}
+
+.input:focus{
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.button{
+    background-color: var(--secondary-color);
+    color: var(--secondary-font-color);
+    border: none;
+    padding: 0.1rem;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.5s;
+    box-shadow: 1px 1px 1px 0px rgba(78, 78, 78, 0.75);
+}
+
+.button:hover{
+    transform: scale(1.1);
+}
+
+.button span{
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    text-decoration: none;
+    margin: 0;
+}
+
+.select{
+    outline: none;
+    border: none;
+    padding: 0.2em;
+    border-radius: 5px;
+    font-size: 1em;
+    color: var(--secondary-font-color);
+    background-color: var(--primary-color);
+}
+
+.select:focus{
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-font-color);
+}
