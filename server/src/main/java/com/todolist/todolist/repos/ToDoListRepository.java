@@ -9,5 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface ToDoListRepository extends JpaRepository<ToDoList, Integer> {
     public ToDoList getToDoListById(Integer id);
 
-    public Page<ToDoList> findAllByOwnerOrderByDateCreated(User owner, Pageable pageable);
+    public Page<ToDoList> findAllByOwnerAndListNameContainingIgnoreCase(User owner, String title, Pageable pageable);
 }

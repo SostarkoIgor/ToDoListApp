@@ -57,10 +57,13 @@ public class ToDoListController {
     @GetMapping("/user")
     public ResponseEntity<Page<UserListDto>> getUserLists(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "20") int size
+            @RequestParam(defaultValue = "8") int size,
+            @RequestParam(defaultValue = "") String title,
+            @RequestParam(defaultValue = "desc") String order,
+            @RequestParam(defaultValue = "date") String orderby
     ){
         var currentUser=authenticationService.getCurrentlyLoggedInUser();
-        return ResponseEntity.ok(toDoListService.findAllListsOfUser(currentUser, PageRequest.of(page, size)));
+        return ResponseEntity.ok(toDoListService.findAllListsOfUser(currentUser, page, size, title, order, orderby));
     }
 
     @DeleteMapping("/{id}")

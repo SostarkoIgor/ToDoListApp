@@ -7,9 +7,7 @@ import com.todolist.todolist.repos.ToDoListRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -29,8 +27,11 @@ public class ToDoListService {
         return toDoListRepository.getToDoListById(id);
     }
 
-    public Page<UserListDto> findAllListsOfUser(User user, Pageable pageable){
-        Page<ToDoList> page=toDoListRepository.findAllByOwnerOrderByDateCreated(user, pageable);
+    public Page<UserListDto> findAllListsOfUser(User user, int pageNumber, int size, String title, String order, String orderBy){
+        var sortDirection= Sort.Direction.fromString(order.toUpperCase());
+        Sort sort = Sort.by(sortDirection, orderBy.equalsIgnoreCase("date") ? "dateCreated" : "listName");
+        Pageable pageable= PageRequest.of(pageNumber, size, sort);
+        Page<ToDoList> page=toDoListRepository.findAllByOwnerAndListNameContainingIgnoreCase(user, title, pageable);
         var t=page.stream().map(a->new UserListDto(a.getId(), a.getListName(), a.getDateCreated())).toList();
         return new PageImpl<>(t, pageable, page.getTotalElements());
     }
