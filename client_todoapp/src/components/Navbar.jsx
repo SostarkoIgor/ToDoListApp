@@ -8,7 +8,7 @@ function Navbar() {
             <li className={styles.link}><a className={styles.linka} href="/">Home</a></li>
             <li className={styles.link}><a className={styles.linka} href="/create">Create list</a></li>
         </ul>
-        <p className={styles.logout}><a className={styles.linka} href='/login'><span className="material-symbols-outlined">logout</span> <span>Logout</span></a></p>
+        <p className={styles.logout}><a className={styles.linka} onClick={() => { removeToken(); window.location.href = '/login';} }><span className="material-symbols-outlined">logout</span> <span>Logout</span></a></p>
     </div>
     )
 }
