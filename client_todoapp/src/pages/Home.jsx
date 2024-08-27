@@ -13,6 +13,11 @@ function Home(){
     const [loading, setLoading] = useState(true)
     const [searchParams, setSearchParams] = useSearchParams()
     const [query, setQuery] = useState("")
+    const [deleteFlag, setDeleteFlag] = useState(false)
+
+    const setDeleteFlagHandler = () => {
+        setDeleteFlag(!deleteFlag)
+    }
 
     useEffect(() => {
         async function start(){
@@ -34,14 +39,16 @@ function Home(){
         }
         start()
         
-    }, [searchParams])
+    }, [searchParams, deleteFlag])
     if (loading) return (<>Loading</>)
     if (!success) return (<Navigate to="/login" />)
     else
     return (<>
     <Filter></Filter>
     <div className={styles.container}>
-    {page.content.map((a, index)=><SmallList key={index} id={a.id} title={a.title} dateCreated={a.datecreated}></SmallList>)}
+    {page.content.map((a, index)=>
+        <SmallList key={index} id={a.id} title={a.title} dateCreated={a.datecreated} setDeleteFlag={setDeleteFlagHandler}></SmallList>)
+    }
     </div>
     {page.totalPages>1 && 
     <NavigatePages page={page} query={query}/>}

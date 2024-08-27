@@ -25,3 +25,22 @@ export async function getUserLists(page, size, title, order, orderby) {
     }
 
 }
+
+export async function deleteList(id) {
+    let success, status
+    let token=getToken()
+    if (!token) return {success:false, status:403}
+    try{
+        let request=await axios.delete("/api/todolist/" + id, {
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        })
+        status=request.status
+        success=status===204
+    }catch(error){
+        return {success:false, status:error.response.status}
+    }finally{
+        return {success:success, status:status}
+    }
+}
