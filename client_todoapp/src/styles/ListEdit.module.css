@@ -1,0 +1,190 @@
+.container{
+    width: 50%;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+.container > *{
+    margin: 1rem;
+}
+
+.editinput{
+    outline: none;
+    border: none;
+    padding: 0.3em;
+    font-size: 1em;
+    border-radius: 5px;
+    color: var(--primary-font-color);
+}
+
+.header{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+    color: var(--primary-font-color);
+    width: fit-content;
+    max-width: 100%;
+}
+
+.icon{
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.5s;
+    color: var(--secondary-color);
+}
+
+.inputtitle{
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--primary-font-color);
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-style: oblique;
+    font-weight: normal;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.inputnewtask{
+    padding: 0.5rem;
+    color: var(--primary-font-color);
+    outline: none;
+    border: none;
+    border-bottom: 2px solid var(--primary-color);
+    font-size: 1.2rem;
+    display: flex;
+    flex-grow: 1;
+}
+
+.nodata{
+    background-color: var(--primary-color);
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    color: var(--secondary-font-color);
+    border-radius: 5px;
+    text-align: center;
+    width: fit-content;
+    margin: auto;
+}
+
+.title{
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--primary-font-color);
+    border-bottom: 2px solid var(--primary-color);
+    overflow-wrap: anywhere;
+}
+
+.footer{
+    margin-top: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2rem;
+    color: var(--primary-font-color);
+    flex-grow: 1;
+}
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    gap: 0.5rem;
+    background-color: var(--secondary-color);
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.703);
+    color: var(--secondary-font-color);
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.button:hover{
+    transform: scale(1.1);
+}
+
+.icon:hover{
+    transform: rotateZ(-360deg);
+}
+
+.options span{
+    margin-left: 0.5rem;
+}
+
+.options span:hover{
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.task{
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: var(--secondary-font-color);
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.taskleftcontainer{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.taskleftcontainer > *{
+    display: inline-block;
+}
+
+.taskcompleted{
+    text-decoration: line-through;
+}
+
+.tasktext{
+    text-wrap: wrap;
+    overflow-wrap: anywhere;
+}
+
+.container h1{
+    text-wrap: wrap;
+}
+
+.checkboxcontainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.checkboxcontainer:hover{
+    color: var(--secondary-color);
+}
+
+.save{
+    margin: auto;
+    margin-top: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+    .container{
+        width: 90%;
+    }
+}

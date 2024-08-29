@@ -19,7 +19,7 @@ function SmallList({title, dateCreated, id, setDeleteFlag}) {
     return (
         <>
         {deleteF==true?
-        <Alert action={deleteList_} message={`Are you sure you want to delete this list (${title})? This action cannot be undone.`} removeAlert={removeAlert}/>
+        <Alert OkAction={deleteList_} message={`Are you sure you want to delete this list (${title})? This action cannot be undone.`} CancelAction={removeAlert}/>
         :<></>}
         <div className={styles.container}>
             <span className={`material-symbols-outlined ${styles.delete}`} onClick={() => setDeleteF(true)}>delete_forever</span>
