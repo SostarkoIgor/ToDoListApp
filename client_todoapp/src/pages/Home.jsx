@@ -35,7 +35,7 @@ function Home(){
             setStatus(list.status)
             setSuccess(list.success)
             setLoading(false)
-            if (title!==null) setQuery(`?title=${title}&order=${order}&orderby=${orderby}`)
+            if (title!==null) setQuery(`&title=${title}&order=${order}&orderby=${orderby}`)
         }
         start()
         
