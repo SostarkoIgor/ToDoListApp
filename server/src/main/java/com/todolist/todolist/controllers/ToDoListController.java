@@ -49,7 +49,7 @@ public class ToDoListController {
     public ResponseEntity<ToDoListCreateDto> createList(@RequestBody ToDoListCreateDto toDoListCreateDto){
         var list=toDoListService.createList(toDoListCreateDto.getListname(), authenticationService.getCurrentlyLoggedInUser());
         for (var l : toDoListCreateDto.getTasks()){
-            taskService.addTask(l, list, false);
+            taskService.addTask(l.getText(), list, l.isIscompleted());
         }
         return ResponseEntity.ok(toDoListCreateDto);
     }

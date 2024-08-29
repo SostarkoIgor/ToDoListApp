@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Navigate, useNavigate, useParams } from "react-router-dom"
 import { getListById } from "../services/ToDoListService"
-import { updateList } from "../services/ToDoListService"
+import { updateList, createList } from "../services/ToDoListService"
 import styles from "../styles/ListEdit.module.css"
 import Alert from "../components/Alert"
 function CreateList({mode}){
@@ -23,6 +23,8 @@ function CreateList({mode}){
     const [newTastText, setNewTaskText] = useState("")
 
     const [currentEditTaskText, setCurrentEditTaskText] = useState("")
+
+    const [alertMessage, setAlertMessage] = useState("No permission to view this list!")
     useEffect(() => {
         async function start(){
             if (id != null){
@@ -33,11 +35,17 @@ function CreateList({mode}){
                 setListId(response.result.id)
                 setTaskList(response.result.tasks)
 
+                
                 //console.log(taskList)
             }else{
                 setListName("")
                 setListId(null)
                 setTaskList([])
+            }
+            console.log(mode)
+            if (mode==="create"){
+                setEditTitle(true)
+                setListChanged(true)
             }
         }
         start()
@@ -81,13 +89,36 @@ function CreateList({mode}){
         setListChanged(true)
     }
 
-    const saveList=()=>{
+    const submit=async ()=>{
+        let response
+        if (mode==="create"){
+            response = await createList(listName, taskList)
+        }else{
+            response = await updateList(listId, listName, taskList)
+        }
 
+        if (response.success){
+            if (mode==="create"){
+                setAlertMessage("List created!")
+            }else{
+                setAlertMessage("List updated!")
+            }
+        }
+        else{
+            setAlertMessage(`Error occured (${response.status}).`)
+        }
+        setAlert(true)
+        
+    }
+
+    const alertAction=()=>{
+        setAlert(false)
+        navigate("/")
     }
 
     return (
         <>
-        {alert && <Alert OkAction={alertAction} message="No permission to view this list!" includeCancel={false}/>}
+        {alert && <Alert OkAction={alertAction} message={alertMessage} includeCancel={false}/>}
         {mode==="edit" && id==null? <Navigate to="/"/>: <></>}
         {mode==="create" && id!=null? <Navigate to="/"/>: <></>}
 
@@ -98,14 +129,14 @@ function CreateList({mode}){
                 <span className={`material-symbols-outlined ${styles.icon}`} onClick={()=>setEditTitle(!editTitle)}>edit</span>
                 </>}
                 {editTitle && <>
-                <input className={styles.inputtitle} type="text" value={listName} onChange={(e)=>setListName(e.target.value)}/>
-                <span className={`material-symbols-outlined ${styles.icon}`} onClick={()=>setEditTitle(!editTitle)}>check_circle</span>
+                <input className={styles.inputtitle} type="text" value={listName} onChange={(e)=> {setListName(e.target.value)}} placeholder="List title..."/>
+                <span className={`material-symbols-outlined ${styles.icon}`} onClick={()=>{setEditTitle(!editTitle); setListChanged(true)}}>check_circle</span>
                 </>}
             </div>
 
             <div className={styles.content}>
                 <div className={styles.tasks}>
-                    {taskList.length===0?<p className={styles.nodata}>No tasks</p>:<></>}
+                    {taskList.length===0 && mode!=="create"?<p className={styles.nodata}>No tasks</p>:<></>}
                     {taskList.map((task, index)=>{
                         return (
                         <div className={styles.task} key={index}>
@@ -144,7 +175,7 @@ function CreateList({mode}){
                 </button>
             </div>
             {listChanged &&
-                <button className={`${styles.button} ${styles.save}`} onClick={saveList}>
+                <button className={`${styles.button} ${styles.save}`} onClick={submit}>
                     <span className="material-symbols-outlined">save</span>
                     <span>Save changes</span>
                 </button>

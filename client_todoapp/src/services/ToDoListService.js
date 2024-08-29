@@ -70,7 +70,7 @@ export async function updateList(id, title, tasks) {
     let token=getToken()
     if (!token) return {success:false, status:403}
     try{
-        let request=await axios.put("/api/todolist/", {
+        let request=await axios.put("/api/todolist", {
             id: id,
             listname: title,
             tasks: tasks
@@ -104,7 +104,7 @@ export async function createList(title, tasks) {
             }
         })
         status=request.status
-        success=status===201
+        success=status===200
     }catch(error){
         return {success:false, status:error.response.status}
     }finally{

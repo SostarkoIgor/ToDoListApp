@@ -13,5 +13,5 @@ import java.util.List;
 @Builder
 public class ToDoListCreateDto {
     private String listname;
-    private List<String> tasks;
+    private List<TaskDto> tasks;
 }
